@@ -739,6 +739,9 @@ static int position_state_changed_listener(const zmk_event_t *eh) {
                     // has been released and hold_trigger_on_release is set
         && (undecided_hold_tap->position_of_first_other_key_pressed ==
             -1) // no other key has been pressed yet
+        &&
+        (ev->state || have_captured_keydown_event(ev->position)) // a release counts only for a key
+                                                                 // pressed after the hold-tap
     ) {
         undecided_hold_tap->position_of_first_other_key_pressed = ev->position;
     }

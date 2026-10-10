@@ -419,6 +419,8 @@ the hold-tap. For home-row mods, this is not always ideal, because it prevents c
 
 If set, instead of the keys **not** listed in `hold-trigger-key-positions` producing a tap when _pressed_ before `tapping-term-ms` expires, they instead produce a tap when _released_ before `tapping-term-ms` expires.
 
+Only the release of a key that was pressed after the hold-tap counts. If a key was pressed before the hold-tap and is released while the hold-tap is undecided, as in a rollover, its release does not decide the hold-tap.
+
 ```dts
 &mt {
     hold-trigger-on-release;

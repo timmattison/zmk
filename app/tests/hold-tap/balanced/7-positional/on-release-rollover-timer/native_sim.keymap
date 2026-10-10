@@ -1,0 +1,15 @@
+#include <dt-bindings/zmk/keys.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/kscan_mock.h>
+#include "../behavior_keymap.dtsi"
+
+&ht_bal { hold-trigger-on-release; };
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,1,10)  // not trigger position, pressed before the hold-tap
+        ZMK_MOCK_PRESS(0,0,10)  // mod 1
+        ZMK_MOCK_RELEASE(1,1,400)  // the non-trigger key comes up, then tapping-term-ms expires
+        ZMK_MOCK_RELEASE(0,0,10)
+    >;
+};
